@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Replace all characters" | sed 's/A/Z/g; s/c/e/g'
+echo "Hello World and ACC are examples of characters." | tr 'AaCc' 'ZeE'
