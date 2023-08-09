@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Hello World and ACC are examples of characters." | tr 'AaCc' 'ZeE'
+echo "Replace all characters" | tr 'Ac' 'Ze'
