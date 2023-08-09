@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "Your input here" | tr 'AaCc' 'ZeE'
+echo "Replace all characters" | sed 's/A/Z/g; s/c/e/g'
