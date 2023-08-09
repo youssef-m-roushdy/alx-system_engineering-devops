@@ -1,2 +1,2 @@
 #!/bin/bash
-BEST ="school"
+create_local_variable(){BEST="school"}
