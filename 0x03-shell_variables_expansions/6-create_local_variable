@@ -1,2 +1,2 @@
 #!/bin/bash
-create_local_variable(){local BEST="school"}
+BEST=school
