@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # Connect to the server using the private key ~/.ssh/school
-ssh-copy-id -i ~/.ssh/school ubuntu@8.8.8.8
+ssh -i ~/.ssh/school ubuntu@54.144.144.164
