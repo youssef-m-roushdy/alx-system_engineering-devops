@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
-# Check if Apache is installed and modify its configuration if necessary
-if [ -f /etc/apache2/ports.conf ]; then
-    sed -i 's/Listen 8080/#Listen 8080/g' /etc/apache2/ports.conf
-    pkill -1 apache2
+# Install nginx if not already installed
+if ! command -v nginx &> /dev/null; then
+    echo "Nginx is not installed. Installing..."
+    # Insert your installation method here, if not using apt-get
+    exit 1
 fi
 
-# Modify Nginx configuration
-if [ -f /etc/nginx/nginx.conf ]; then
-    sed -i 's/#user www-data;/user nginx;/g' /etc/nginx/nginx.conf
-fi
+# Stop nginx service
+service nginx stop
 
-# Modify Nginx default site configuration
-if [ -f /etc/nginx/sites-available/default ]; then
-    sed -i 's/80/8080/g' /etc/nginx/sites-available/default
-fi
+# Update nginx configuration to run as nginx user
+sed -i 's/user\s*[^;]*/user nginx;/g' /etc/nginx/nginx.conf
 
-# Restart Nginx service
-service nginx restart
+# Modify nginx default site configuration to listen on port 8080
+sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+
+# Restart nginx service
+service nginx start
+
+echo "Nginx is now running as nginx user and listening on port 8080."
