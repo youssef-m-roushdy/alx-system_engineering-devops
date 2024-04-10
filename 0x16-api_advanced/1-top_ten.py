@@ -13,7 +13,7 @@ def top_ten(subreddit):
     """
     url = 'https://www.reddit.com/r/{}/hot.json?show="all"&limit=10'.format(
         subreddit)
-    headers = {'User-Agent': 'Python/1.0(Holberton School 0x16)'}
+    headers = {'User-Agent': 'my-custom-user-agent'}
     response = requests.get(url, headers=headers)
     try:
         top_ten = response.json()['data']['children']
