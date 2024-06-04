@@ -1,12 +1,20 @@
 #!/usr/bin/python3
 """
-0-main
+Queries the Reddit API and returns the number of total subscribers for a given
+subreddit.
 """
-import sys
+import requests
 
-if __name__ == '__main__':
-    number_of_subscribers = __import__('0-subs').number_of_subscribers
-    if len(sys.argv) < 2:
-        print("Please pass an argument for the subreddit to search.")
-    else:
-        print("{:d}".format(number_of_subscribers(sys.argv[1])))
+
+def number_of_subscribers(subreddit):
+    """
+    Queries the Reddit API and returns the number of total subscribers for a
+    given subreddit.
+    """
+    url = 'http://www.reddit.com/r/{}/about.json'.format(subreddit)
+    headers = {'User-Agent': 'Python/1.0(Holberton School 0x16 task 0)'}
+    response = requests.get(url, headers=headers)
+    if (not response.ok):
+        return 0
+    subscriber_count = response.json().get('data').get('subscribers')
+    return subscriber_count
