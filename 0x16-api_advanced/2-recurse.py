@@ -10,7 +10,7 @@ def recurse(subreddit, host_list=[], after="null"):
     username = 'ledbag123'
     password = 'Reddit72'
     user_pass_dict = {'user': username, 'passwd': password, 'api_type': 'json'}
-    headers = {'user-agent': '/u/ledbag123 API Python for Holberton School'}
+    headers = {'user-agent': 'Redit-API'}
     payload = {"limit": "100", "after": after}
     url = 'https://www.reddit.com/r/{}/hot.json'.format(subreddit)
     client = requests.session()
